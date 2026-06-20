@@ -1,0 +1,47 @@
+{
+  "last_updated": "2026-06-20T12:00:00Z",
+  "series": [
+    {
+      "region": "europe-west1",
+      "zone": "europe-west1-b",
+      "machine_type": "n2-standard-2",
+      "data": [
+        {"timestamp": "2026-06-19T00:00:00Z", "score": 1.0, "uptime": 12.5},
+        {"timestamp": "2026-06-19T06:00:00Z", "score": 0.8, "uptime": 10.0},
+        {"timestamp": "2026-06-19T12:00:00Z", "score": 0.9, "uptime": 11.2},
+        {"timestamp": "2026-06-19T18:00:00Z", "score": 0.4, "uptime": 5.4},
+        {"timestamp": "2026-06-20T00:00:00Z", "score": 0.3, "uptime": 3.1},
+        {"timestamp": "2026-06-20T06:00:00Z", "score": 0.6, "uptime": 8.0},
+        {"timestamp": "2026-06-20T12:00:00Z", "score": 0.9, "uptime": 12.0}
+      ]
+    },
+    {
+      "region": "europe-west1",
+      "zone": "europe-west1-b",
+      "machine_type": "t2d-standard-4",
+      "data": [
+        {"timestamp": "2026-06-19T00:00:00Z", "score": 0.8, "uptime": 8.5},
+        {"timestamp": "2026-06-19T06:00:00Z", "score": 0.9, "uptime": 9.0},
+        {"timestamp": "2026-06-19T12:00:00Z", "score": 0.8, "uptime": 8.2},
+        {"timestamp": "2026-06-19T18:00:00Z", "score": 0.9, "uptime": 9.4},
+        {"timestamp": "2026-06-20T00:00:00Z", "score": 0.9, "uptime": 9.1},
+        {"timestamp": "2026-06-20T06:00:00Z", "score": 0.9, "uptime": 9.0},
+        {"timestamp": "2026-06-20T12:00:00Z", "score": 0.9, "uptime": 9.2}
+      ]
+    },
+    {
+      "region": "us-central1",
+      "zone": "us-central1-a",
+      "machine_type": "n2-standard-2",
+      "data": [
+        {"timestamp": "2026-06-19T00:00:00Z", "score": 0.9, "uptime": 14.5},
+        {"timestamp": "2026-06-19T06:00:00Z", "score": 0.9, "uptime": 14.0},
+        {"timestamp": "2026-06-19T12:00:00Z", "score": 0.7, "uptime": 9.2},
+        {"timestamp": "2026-06-19T18:00:00Z", "score": 0.6, "uptime": 8.4},
+        {"timestamp": "2026-06-20T00:00:00Z", "score": 0.8, "uptime": 11.1},
+        {"timestamp": "2026-06-20T06:00:00Z", "score": 0.9, "uptime": 13.0},
+        {"timestamp": "2026-06-20T12:00:00Z", "score": 1.0, "uptime": 15.0}
+      ]
+    }
+  ]
+}
