@@ -22,7 +22,7 @@ gcloud storage rsync "${DIR}/../frontend/" "gs://${GCS_BUCKET}/" \
   --project="${GCP_PROJECT}" \
   --recursive \
   --delete-unmatched-destination-objects \
-  --exclude=".*\.mock\.json$"
+  --exclude=".*\.mock\.json$|data\.json$"
 
 # Définir explicitement les types MIME pour les fichiers clés
 echo "Configuration des en-têtes Content-Type..."

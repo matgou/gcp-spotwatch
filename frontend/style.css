@@ -44,6 +44,41 @@ body {
     gap: 24px;
 }
 
+/* Env Banner */
+.env-banner {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background-color: rgba(251, 191, 36, 0.08);
+    border: 1px solid rgba(251, 191, 36, 0.2);
+    padding: 10px 16px;
+    border-radius: var(--border-radius);
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+.env-badge {
+    background-color: #fbbf24;
+    color: #0b0f19;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    letter-spacing: 0.5px;
+}
+
+.env-url a {
+    color: var(--gcp-blue);
+    text-decoration: none;
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+.env-url a:hover {
+    color: var(--gcp-blue-hover);
+    text-decoration: underline;
+}
+
 /* Header */
 .app-header {
     border-bottom: 1px solid var(--border-color);
