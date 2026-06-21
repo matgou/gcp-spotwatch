@@ -9,7 +9,7 @@ steps:
       - '${_REGION}-docker.pkg.dev/${PROJECT_ID}/${_REPO_NAME}/${_JOB_NAME}:latest'
       - '-f'
       - 'fetcher/Dockerfile'
-      - 'fetcher'
+      - '.'
 
   # 2. Push de l'image Docker sur Artifact Registry (versionée par tag et latest)
   - name: 'gcr.io/cloud-builders/docker'

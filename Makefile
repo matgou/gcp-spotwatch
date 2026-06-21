@@ -31,7 +31,7 @@ deploy-frontend:
 	./scripts/deploy_frontend.sh
 
 build-fetcher:
-	docker build -t $(REGION)-docker.pkg.dev/$(GCP_PROJECT)/$(REPO_NAME)/$(JOB_NAME):latest -f fetcher/Dockerfile fetcher
+	docker build -t $(REGION)-docker.pkg.dev/$(GCP_PROJECT)/$(REPO_NAME)/$(JOB_NAME):latest -f fetcher/Dockerfile .
 
 deploy-fetcher:
 	@if [ -z "$(GCP_PROJECT)" ]; then echo "Erreur: GCP_PROJECT non défini dans le fichier .env"; exit 1; fi

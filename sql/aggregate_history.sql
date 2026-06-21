@@ -8,7 +8,7 @@ SELECT
   COALESCE(zone, 'ALL') AS zone,
   machine_type,
   ROUND(AVG(obtainability_score), 2) AS obtainability_score,
-  ROUND(AVG(expected_uptime_days), 1) AS expected_uptime_days
+  ROUND(AVG(expected_uptime_days), 3) AS expected_uptime_days
 FROM
   `{GCP_PROJECT}.{BQ_DATASET}.{BQ_TABLE}`
 WHERE

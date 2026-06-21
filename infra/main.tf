@@ -22,7 +22,8 @@ variable "gcp_services" {
     "artifactregistry.googleapis.com",
     "run.googleapis.com",
     "cloudscheduler.googleapis.com",
-    "bigquery.googleapis.com"
+    "bigquery.googleapis.com",
+    "monitoring.googleapis.com"
   ]
 }
 
@@ -174,6 +175,12 @@ resource "google_project_iam_member" "fetcher_bq_editor" {
   member  = "serviceAccount:${google_service_account.fetcher.email}"
 }
 
+resource "google_project_iam_member" "fetcher_bq_job_user" {
+  project = var.project_id
+  role    = "roles/bigquery.jobUser"
+  member  = "serviceAccount:${google_service_account.fetcher.email}"
+}
+
 # Droit d'écriture sur le bucket GCS pour le fetcher
 resource "google_storage_bucket_iam_member" "fetcher_gcs_admin" {
   bucket = google_storage_bucket.static_site.name
@@ -280,4 +287,43 @@ resource "google_cloud_scheduler_job" "hourly_fetch" {
       service_account_email = google_service_account.scheduler.email
     }
   }
+}
+
+# ==========================================
+# 7. Monitoring et Alertes
+# ==========================================
+
+# Canal de notification E-mail (facultatif, créé seulement si alert_email est défini)
+resource "google_monitoring_notification_channel" "email" {
+  count        = var.alert_email != "" ? 1 : 0
+  display_name = "Spotwatcher Alerts Email"
+  type         = "email"
+  labels = {
+    email_address = var.alert_email
+  }
+  
+  depends_on = [google_project_service.gcp_services]
+}
+
+# Alerte sur échec d'exécution du Job Cloud Run (Alerte basée sur les Logs)
+resource "google_monitoring_alert_policy" "job_failure" {
+  display_name = "Spot Capacity Fetcher Job Failure Alert"
+  combiner     = "OR"
+  
+  conditions {
+    display_name = "Cloud Run Job log error"
+    condition_matched_log {
+      filter = "resource.type = \"cloud_run_job\" AND resource.labels.job_name = \"${google_cloud_run_v2_job.fetcher.name}\" AND severity >= ERROR"
+    }
+  }
+
+  alert_strategy {
+    notification_rate_limit {
+      period = "300s"
+    }
+  }
+
+  notification_channels = var.alert_email != "" ? [google_monitoring_notification_channel.email[0].name] : []
+
+  depends_on = [google_project_service.gcp_services]
 }

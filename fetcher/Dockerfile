@@ -7,11 +7,13 @@ ENV PYTHONUNBUFFERED=1
 WORKDIR /app
 
 # Installer les dépendances
-COPY requirements.txt .
+COPY fetcher/requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copier le code source et le fichier SQL
-COPY . .
+# Copier le code source et le dossier SQL
+COPY fetcher/ /app/fetcher/
+COPY sql/ /app/sql/
 
-# Lancement du script
+# Configurer le répertoire de travail et lancer le script depuis fetcher
+WORKDIR /app/fetcher
 CMD ["python", "main.py"]

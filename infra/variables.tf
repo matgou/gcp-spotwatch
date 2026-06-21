@@ -68,3 +68,9 @@ variable "machine_types" {
   description = "Liste des types de machines à suivre, séparées par des virgules."
 }
 
+variable "alert_email" {
+  type        = string
+  default     = ""
+  description = "L'adresse email pour recevoir les alertes en cas de panne du collecteur (optionnel)."
+}
+

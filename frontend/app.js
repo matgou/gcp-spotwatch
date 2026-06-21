@@ -184,7 +184,12 @@ function calculateKPIs(seriesList) {
     if (count > 0) {
         const avgScore = (totalScore / count).toFixed(2);
         avgScoreEl.textContent = avgScore;
-        avgUptimeEl.textContent = `${(totalUptime / count).toFixed(1)} j`;
+        const avgUptimeValue = totalUptime / count;
+        if (avgUptimeValue < 0.1) {
+            avgUptimeEl.textContent = `${(avgUptimeValue * 24).toFixed(1)} h`;
+        } else {
+            avgUptimeEl.textContent = `${avgUptimeValue.toFixed(1)} j`;
+        }
 
         // Style selon le score
         if (avgScore >= 0.7) {
